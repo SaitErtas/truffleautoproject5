@@ -1,4 +1,7 @@
-// SPDX-License-Identifier: MIT
+
+// File: contracts/DoubleMyContract.sol
+
+
 pragma solidity >=0.4.25 <0.9.0;
 
 contract DoubleMyContract {
