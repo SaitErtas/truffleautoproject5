@@ -105,3 +105,8 @@ dist
 
 # Truffle
 build
+.secret
+
+.env*
+.flaskenv*
+!.env.project
