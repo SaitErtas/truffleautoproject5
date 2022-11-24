@@ -38,7 +38,7 @@ module.exports = {
     host: '127.0.0.1',
   },
   api_keys: {
-    goerli: 'ovgjkutqVzuZckq0GTW5IJbeNh5xnef5',
+    goerlietherscan: 'ovgjkutqVzuZckq0GTW5IJbeNh5xnef5',
   },
   plugins: ['truffle-plugin-verify'],
 }

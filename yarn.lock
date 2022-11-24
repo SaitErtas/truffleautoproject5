@@ -6321,7 +6321,7 @@
   "resolved" "https://registry.npmjs.org/truffle-error/-/truffle-error-0.0.5.tgz"
   "version" "0.0.5"
 
-"truffle-flattener@^1.4.0":
+"truffle-flattener@^1.4.0", "truffle-flattener@^1.6.0":
   "integrity" "sha512-scS5Bsi4CZyvlrmD4iQcLHTiG2RQFUXVheTgWeH6PuafmI+Lk5U87Es98loM3w3ImqC9/fPHq+3QIXbcPuoJ1Q=="
   "resolved" "https://registry.npmjs.org/truffle-flattener/-/truffle-flattener-1.6.0.tgz"
   "version" "1.6.0"
