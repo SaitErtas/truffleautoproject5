@@ -1,7 +1,9 @@
 //const HelloBlockchain = artifacts.require("HelloBlockchain");
-const DoubleMyContract = artifacts.require("DoubleMyContract");
+// const DoubleMyContract = artifacts.require("DoubleMyContract");
+const SampleContract = artifacts.require("SampleContract");
 
 module.exports = function (deployer) {
   //deployer.deploy(HelloBlockchain, "Hello Blockchain");
-  deployer.deploy(DoubleMyContract, "Double My Contract");
+  // deployer.deploy(DoubleMyContract, "Double My Contract");
+  deployer.deploy(SampleContract, "SampleContract");
 };
