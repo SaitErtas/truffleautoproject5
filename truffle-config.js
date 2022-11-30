@@ -8,17 +8,17 @@ const mnemonic = fs
 
 module.exports = {
   networks: {
+    developmentOld: {
+      host: '127.0.0.1',
+      port: 7545,
+      network_id: '*',
+    },
     development: {
       host: '127.0.0.1',
-      port: 7545,
-      network_id: '5777',
+      port: 8545,
+      network_id: '*',
     },
-    develop: {
-      host: '127.0.0.1',
-      port: 7545,
-      network_id: '5777',
-    },
-    dashboard: {},
+    dashboard: { port: 24012 },
     goerli: {
       provider: () => new HDWalletProvider(mnemonic, 'https://eth-goerli.g.alchemy.com/v2/ovgjkutqVzuZckq0GTW5IJbeNh5xnef5'),
       network_id: '5', // Goerli's id
