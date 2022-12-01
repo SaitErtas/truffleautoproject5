@@ -8,15 +8,11 @@ const mnemonic = fs
 
 module.exports = {
   networks: {
-    developmentOld: {
-      host: '127.0.0.1',
-      port: 7545,
-      network_id: '*',
-    },
     development: {
       host: '127.0.0.1',
-      port: 8545,
-      network_id: '*',
+      port: 7545,
+      network_id: '5777',
+      chain_id:1337
     },
     dashboard: { port: 24012 },
     goerli: {

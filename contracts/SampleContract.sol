@@ -34,9 +34,9 @@ contract SampleContract {
     mapping(address => uint256) balances;
 
     function invest() external payable {
-        if (msg.value < 1 ether) {
-            revert();
-        }
+        // if (msg.value < 1 ether) {
+        //     revert();
+        // }
         balances[msg.sender] += msg.value;
     }
 
