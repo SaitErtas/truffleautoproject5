@@ -50,18 +50,38 @@ contract SampleContract {
     //Payable öneki parantezin dışında olursa para girişi olacak demek.
     address payable[] recipients;
 
-    function sendEther(address payable recepient) external {
-        recepient.transfer(1 ether); // reverts on failure
+    function sendEther(address payable recepient, uint256 _amount) external {
+        recepient.transfer(_amount); // reverts on failure
 
-        address payable a;
-        a = recepient;
-        a.transfer(100);
+        // address payable a;
+        // a = recepient;
+        // a.transfer(100);
 
-        //msg.sender.transfer(100);
+        // //msg.sender.transfer(100);
 
-        bool b = recepient.send(1 ether); //returns a boolean result for success/failure.
+        // bool b = recepient.send(1 ether); //returns a boolean result for success/failure.
 
-        if (b) {}
+        // if (b) {}
+    }
+
+    EtherReceiver private receiverAdr = new EtherReceiver();
+
+    function sendEther2(uint256 _amount) public payable {
+        if (!payable(address(receiverAdr)).send(_amount)) {
+            //handle failed send
+        }
+    }
+
+    function callValueEther(uint256 _amount) public payable {
+        (bool success, ) = address(receiverAdr).call{
+            value: _amount,
+            gas: 35000
+        }("");
+        require(success, "Transfer failed.");
+    }
+
+    function transferEther(uint256 _amount) public payable {
+        payable(address(receiverAdr)).transfer(_amount);
     }
 
     //Burda external dışar açık demek
@@ -69,4 +89,8 @@ contract SampleContract {
     function helloWorld() external pure returns (string memory) {
         return "HelloWorld";
     }
+}
+
+contract EtherReceiver {
+    fallback() external payable {}
 }
