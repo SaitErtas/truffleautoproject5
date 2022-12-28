@@ -1,37 +1,30 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "./ContractB.sol";
+// import "./ContractB.sol";
 
-//Bu kontratta SampleKontratı çalıştırmak için kodlar var.
-contract A {
-    ////////////////////////////////////////////////////////////////////////////
-    //1. Call Function Of Other Contract
-    //2. import keyword
-    //3. contract interface
-    //4. error propagation
+import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-    //1. interface of B   => B
-    //2. address of B
-    address addressB;
+contract SampleContract is Pausable, Ownable {
+    
 
-    function setAddressB(address _addressB) external {
-        addressB = _addressB;
-    }
-
-    function callHelloWorld() external view returns (string memory) {
-        SampleContract b = SampleContract(addressB);
-        return b.helloWorld();
-    }
-
-    function callHelloWorld2() external view returns (string memory) {
-        InterfaceB b = InterfaceB(addressB);
-        return b.helloWorld();
-    }
-}
-
-contract SampleContract {
     mapping(address => uint256) balances;
+    /////////////////////////////////////////////////////////////////////////////
+    //Sending Ether From a Smart Contract
+    //İçerdeki payable smart kontrattan para çıkışı yapılabilir demek.
+    //Payable öneki parantezin dışında olursa para girişi olacak demek.
+    address payable[] recipients;
+
+    function pause() public onlyOwner {
+        _pause();
+    }
+
+    function unpause() public onlyOwner {
+        _unpause();
+    }
+
+
 
     function invest() external payable {
         // if (msg.value < 1 ether) {
@@ -43,12 +36,6 @@ contract SampleContract {
     function balanceOf() external view returns (uint256) {
         return address(this).balance;
     }
-
-    /////////////////////////////////////////////////////////////////////////////
-    //Sending Ether From a Smart Contract
-    //İçerdeki payable smart kontrattan para çıkışı yapılabilir demek.
-    //Payable öneki parantezin dışında olursa para girişi olacak demek.
-    address payable[] recipients;
 
     function sendEther(address payable recepient, uint256 _amount) external {
         recepient.transfer(_amount); // reverts on failure
@@ -94,3 +81,30 @@ contract SampleContract {
 contract EtherReceiver {
     fallback() external payable {}
 }
+
+//Bu kontratta SampleKontratı çalıştırmak için kodlar var.
+// contract A {
+//     ////////////////////////////////////////////////////////////////////////////
+//     //1. Call Function Of Other Contract
+//     //2. import keyword
+//     //3. contract interface
+//     //4. error propagation
+
+//     //1. interface of B   => B
+//     //2. address of B
+//     address addressB;
+
+//     function setAddressB(address _addressB) external {
+//         addressB = _addressB;
+//     }
+
+//     function callHelloWorld() external view returns (string memory) {
+//         SampleContract b = SampleContract(addressB);
+//         return b.helloWorld();
+//     }
+
+//     function callHelloWorld2() external view returns (string memory) {
+//         InterfaceB b = InterfaceB(addressB);
+//         return b.helloWorld();
+//     }
+// }
