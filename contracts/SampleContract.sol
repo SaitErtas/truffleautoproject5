@@ -3,11 +3,13 @@ pragma solidity ^0.8.9;
 
 // import "./ContractB.sol";
 
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
-contract SampleContract is Pausable, Ownable {
-    
+contract SampleContract is ERC20, Pausable, ERC20Burnable, Ownable {
+    constructor() ERC20("MyToken", "MTK") {}
 
     mapping(address => uint256) balances;
     /////////////////////////////////////////////////////////////////////////////
@@ -23,8 +25,6 @@ contract SampleContract is Pausable, Ownable {
     function unpause() public onlyOwner {
         _unpause();
     }
-
-
 
     function invest() external payable {
         // if (msg.value < 1 ether) {
