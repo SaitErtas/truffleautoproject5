@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
 contract SampleContract is ERC20, Pausable, ERC20Burnable, Ownable {
-    constructor() ERC20("MyToken", "MTK") {}
+    constructor() ERC20("CPosContract", "CPC") {}
 
     mapping(address => uint256) balances;
     /////////////////////////////////////////////////////////////////////////////
@@ -26,6 +26,14 @@ contract SampleContract is ERC20, Pausable, ERC20Burnable, Ownable {
         _unpause();
     }
 
+    function _beforeTokenTransfer(
+        address from,
+        address to,
+        uint256 amount
+    ) internal override whenNotPaused {
+        super._beforeTokenTransfer(from, to, amount);
+    }
+
     function invest() external payable {
         // if (msg.value < 1 ether) {
         //     revert();
@@ -35,6 +43,16 @@ contract SampleContract is ERC20, Pausable, ERC20Burnable, Ownable {
 
     function balanceOf() external view returns (uint256) {
         return address(this).balance;
+    }
+
+    function balanceOf1() external view returns (uint256) {
+        return address(this).balance;
+    }
+
+    //Burda external dışarı açık demek
+    //pure function string dönen function demek
+    function helloWorld() external pure returns (string memory) {
+        return "HelloWorld";
     }
 
     function sendEther(address payable recepient, uint256 _amount) external {
@@ -69,12 +87,6 @@ contract SampleContract is ERC20, Pausable, ERC20Burnable, Ownable {
 
     function transferEther(uint256 _amount) public payable {
         payable(address(receiverAdr)).transfer(_amount);
-    }
-
-    //Burda external dışar açık demek
-    //pure function string dönen function demek
-    function helloWorld() external pure returns (string memory) {
-        return "HelloWorld";
     }
 }
 
