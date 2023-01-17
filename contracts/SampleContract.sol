@@ -41,6 +41,12 @@ contract SampleContract is ERC20, Pausable, ERC20Burnable, Ownable {
         balances[msg.sender] += msg.value;
     }
 
+    //Burn diye inherit alınan library de fonksiyon olduğu için override ediliyor
+    function burn(uint256 amount) override public onlyOwner {
+        _burn(_msgSender(), amount);
+    }
+
+    //Bu fonksiyon ERC20 den sonra çalışmadı balaceOf1 Çalıştı
     function balanceOf() external view returns (uint256) {
         return address(this).balance;
     }
