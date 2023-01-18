@@ -29,6 +29,6 @@
   "homepage": "https://github.com/SaitErtas/truffleautoproject5#readme",
   "description": "",
   "devDependencies": {
-    "truffle-plugin-verify": "^0.6.0"
+    "truffle-plugin-verify": "^0.6.1"
   }
 }

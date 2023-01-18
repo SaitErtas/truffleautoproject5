@@ -6403,10 +6403,10 @@
     "lodash" "^4.17.13"
     "web3" "1.2.1"
 
-"truffle-plugin-verify@^0.6.0":
-  "integrity" "sha512-nu0qDbbgAOTmqbJPZzBpEC9gaNDnTmm9cxuvyAfrO9d5g0dC+VAdDSqVP8+MNnjhQ6ZXri88s6F+IiffhpYfaA=="
-  "resolved" "https://registry.npmjs.org/truffle-plugin-verify/-/truffle-plugin-verify-0.6.0.tgz"
-  "version" "0.6.0"
+"truffle-plugin-verify@^0.6.1":
+  "integrity" "sha512-9Wxscxtmv1njVJKmG9nywx19QZrQqXrdcgHQs/8SeGNts8VjP6K9/CWO0uCMnBcmuew42LjlgxYB7cajSWR0CA=="
+  "resolved" "https://registry.npmjs.org/truffle-plugin-verify/-/truffle-plugin-verify-0.6.1.tgz"
+  "version" "0.6.1"
   dependencies:
     "axios" "^0.26.1"
     "cli-logger" "^0.5.40"
